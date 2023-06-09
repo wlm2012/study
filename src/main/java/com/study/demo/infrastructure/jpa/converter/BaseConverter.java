@@ -1,5 +1,7 @@
 package com.study.demo.infrastructure.jpa.converter;
 
+import org.mapstruct.InheritInverseConfiguration;
+
 import java.util.List;
 
 public interface BaseConverter<E, P> {
