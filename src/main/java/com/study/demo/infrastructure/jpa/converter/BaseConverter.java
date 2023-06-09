@@ -1,4 +1,4 @@
-package com.study.demo.infrastrucure.jpa.converter;
+package com.study.demo.infrastructure.jpa.converter;
 
 import java.util.List;
 

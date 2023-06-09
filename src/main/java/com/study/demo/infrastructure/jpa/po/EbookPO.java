@@ -1,4 +1,4 @@
-package com.study.demo.infrastrucure.jpa.po;
+package com.study.demo.infrastructure.jpa.po;
 
 @Data
 @Entity
