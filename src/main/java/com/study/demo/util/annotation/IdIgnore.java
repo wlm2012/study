@@ -1,4 +1,4 @@
-package com.study.demo.infrastructure.common.annotation;
+package com.study.demo.util.annotation;
 
 import org.mapstruct.Mapping;
 
