@@ -1,10 +1,10 @@
 package com.study.demo.domain.model;
 
-import lombok.Builder;
 import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
 @Getter
-@Builder
+@SuperBuilder
 public class EbookEntity {
 
     private String id;

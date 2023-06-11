@@ -3,7 +3,7 @@ package com.study.demo.application.dto.request;
 import lombok.Data;
 
 @Data
-public class EbookAddRequest {
+public class EbookCreateCmd {
 
     private String name;
 }

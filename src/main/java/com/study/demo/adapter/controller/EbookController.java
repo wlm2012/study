@@ -1,7 +1,7 @@
 package com.study.demo.adapter.controller;
 
 import com.study.demo.application.assembler.EbookAssembler;
-import com.study.demo.application.dto.request.EbookAddRequest;
+import com.study.demo.application.dto.request.EbookCreateCmd;
 import com.study.demo.domain.model.EbookEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +16,8 @@ public class EbookController {
     private final EbookAssembler ebookAssembler;
 
     @RequestMapping("/add")
-    public void add(EbookAddRequest ebookAddRequest) {
-        EbookEntity ebookEntity = ebookAssembler.toEntity(ebookAddRequest);
+    public void add(EbookCreateCmd ebookCreateCmd) {
+        EbookEntity ebookEntity = ebookAssembler.toEntity(ebookCreateCmd);
         System.out.println(ebookEntity);
     }
 
