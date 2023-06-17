@@ -1,4 +1,4 @@
-package com.study.demo.application.support;
+package com.study.demo.domain.support;
 
 import java.io.Serializable;
 

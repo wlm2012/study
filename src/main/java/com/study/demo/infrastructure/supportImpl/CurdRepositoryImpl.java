@@ -1,6 +1,6 @@
-package com.study.demo.infrastructure.jpa.supportImpl;
+package com.study.demo.infrastructure.supportImpl;
 
-import com.study.demo.application.support.CurdRepository;
+import com.study.demo.domain.support.CurdRepository;
 import com.study.demo.infrastructure.jpa.converter.BaseConverter;
 import jakarta.annotation.Resource;
 import org.springframework.data.jpa.repository.JpaRepository;

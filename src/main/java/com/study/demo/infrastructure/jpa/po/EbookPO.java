@@ -15,10 +15,10 @@ import java.util.Objects;
 public class EbookPO {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "varchar(255) COMMENT '书名'")
+    @Column(columnDefinition = "varchar(255)")
     private String name;
 
     @Override

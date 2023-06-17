@@ -1,5 +1,11 @@
 spring:
   profiles:
     active: memfiredb
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 server:
   port: 9090
+
