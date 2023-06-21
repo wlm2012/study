@@ -6,6 +6,7 @@ import jakarta.annotation.Resource;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 public class CurdRepositoryImpl<I extends Serializable, E, P, M extends JpaRepository<P, I>,
         C extends BaseConverter<E, P>> implements CurdRepository<I, E> {
@@ -20,4 +21,16 @@ public class CurdRepositoryImpl<I extends Serializable, E, P, M extends JpaRepos
     public E create(E entity) {
         return converter.toEntity(jpaRepository.save(converter.toPO(entity)));
     }
+
+    @Override
+    public Optional<E> findById(I id) {
+        Optional<P> optional = jpaRepository.findById(id);
+        E e = null;
+        if (optional.isPresent()) {
+            e = converter.toEntity(optional.get());
+        }
+        return Optional.ofNullable(e);
+    }
+
+
 }

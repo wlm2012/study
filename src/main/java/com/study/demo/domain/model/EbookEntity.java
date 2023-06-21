@@ -7,7 +7,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class EbookEntity {
 
-    private String id;
+    private Long id;
 
     private String name;
 }

@@ -11,7 +11,6 @@ public interface BaseConverter<E, P> {
     @InheritInverseConfiguration
     E toEntity(P po);
 
-
     List<P> toPO(List<E> entities);
 
     List<E> toEntity(List<P> pos);
