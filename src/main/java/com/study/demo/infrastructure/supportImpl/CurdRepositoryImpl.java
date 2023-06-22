@@ -32,5 +32,10 @@ public class CurdRepositoryImpl<I extends Serializable, E, P, M extends JpaRepos
         return Optional.ofNullable(e);
     }
 
+    @Override
+    public void deleteById(I id) {
+        jpaRepository.deleteById(id);
+    }
+
 
 }

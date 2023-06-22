@@ -8,5 +8,5 @@ import com.study.demo.infrastructure.jpa.repository.EbookJPARepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class EbookRepositoryImpl extends CurdRepositoryImpl<String, EbookEntity, EbookPO, EbookJPARepository, EbookConverter> implements EbookRepository {
+public class EbookRepositoryImpl extends CurdRepositoryImpl<Long, EbookEntity, EbookPO, EbookJPARepository, EbookConverter> implements EbookRepository {
 }

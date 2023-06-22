@@ -2,6 +2,7 @@ package com.study.demo.adapter.controller;
 
 import com.study.demo.application.assembler.EbookAssembler;
 import com.study.demo.application.dto.request.EbookCreateCmd;
+import com.study.demo.application.dto.request.IdCmd;
 import com.study.demo.application.dto.response.EbookDTO;
 import com.study.demo.application.service.EbookServiceImpl;
 import com.study.demo.domain.model.EbookEntity;
@@ -31,6 +32,10 @@ public class EbookController {
         return ebookAssembler.toDTO(ebookEntity);
     }
 
+    @PostMapping("/deleteById")
+    public void deleteById(@RequestBody IdCmd idCmd) {
+        ebookService.deleteById(idCmd.getId());
+    }
 
 
 }

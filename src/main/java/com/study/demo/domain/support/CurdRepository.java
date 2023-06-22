@@ -8,4 +8,7 @@ public interface CurdRepository<I extends Serializable, E> {
     E create(E entity);
 
     Optional<E> findById(I id);
+
+    void deleteById(I id);
+
 }

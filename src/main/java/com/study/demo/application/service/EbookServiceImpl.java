@@ -21,4 +21,8 @@ public class EbookServiceImpl {
         Optional<EbookEntity> optionalEbookEntity = ebookRepository.findById(id);
         return optionalEbookEntity.orElse(null);
     }
+
+    public void deleteById(Long id) {
+        ebookRepository.deleteById(id);
+    }
 }
