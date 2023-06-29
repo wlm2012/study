@@ -5,7 +5,13 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
-    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 1000
+        # N+1 问题，批量查询的量，用in代替，减少sql查询的次数
+        default_batch_fetch_size: 100
+    show-sql: false
 server:
   port: 9090
 

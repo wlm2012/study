@@ -6,6 +6,7 @@ import jakarta.annotation.Resource;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Optional;
 
 public class CurdRepositoryImpl<I extends Serializable, E, P, M extends JpaRepository<P, I>,
@@ -20,6 +21,11 @@ public class CurdRepositoryImpl<I extends Serializable, E, P, M extends JpaRepos
     @Override
     public E create(E entity) {
         return converter.toEntity(jpaRepository.save(converter.toPO(entity)));
+    }
+
+    @Override
+    public List<E> createAll(List<E> entities) {
+        return converter.toEntity(jpaRepository.saveAll(converter.toPO(entities)));
     }
 
     @Override

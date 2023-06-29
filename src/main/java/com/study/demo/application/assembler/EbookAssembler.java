@@ -7,8 +7,14 @@ import com.study.demo.util.annotation.IdIgnore;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface EbookAssembler extends BaseAssembler<EbookDTO, EbookEntity> {
+public abstract class EbookAssembler implements BaseAssembler<EbookDTO, EbookEntity> {
 
     @IdIgnore
-    EbookEntity toEntity(EbookCreateCmd ebookCreateCmd);
+    public abstract EbookEntity toEntity(EbookCreateCmd ebookCreateCmd);
+
+    public EbookEntity toEntity(String name) {
+        return EbookEntity.builder()
+                .name(name)
+                .build();
+    }
 }

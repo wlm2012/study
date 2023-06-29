@@ -5,5 +5,5 @@ import com.study.demo.infrastructure.jpa.po.EbookPO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface EbookConverter extends BaseConverter<EbookEntity, EbookPO> {
+public abstract class EbookConverter implements BaseConverter<EbookEntity, EbookPO> {
 }
