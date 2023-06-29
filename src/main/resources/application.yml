@@ -7,6 +7,7 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
+        order_inserts: true
         jdbc:
           batch_size: 1000
         # N+1 问题，批量查询的量，用in代替，减少sql查询的次数
