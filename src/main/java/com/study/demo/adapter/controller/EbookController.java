@@ -52,30 +52,33 @@ public class EbookController {
         long start = System.currentTimeMillis();
         List<List<EbookEntity>> lists = new ArrayList<>();
         Faker faker = new Faker();
-        for (int i = 0; i < num; i++) {
-            List<EbookEntity> ebookEntities = new ArrayList<>();
-            for (int j = 0; j < 1000; j++) {
-                ebookEntities.add(ebookAssembler.toEntity(faker.name().name()));
-            }
-            lists.add(ebookEntities);
+
+        List<EbookEntity> ebookEntityList = new ArrayList<>();
+        for (int j = 0; j < 1000; j++) {
+            ebookEntityList.add(ebookAssembler.toEntity(faker.name().name()));
         }
+
         log.info("生成执行时长：{}毫秒", System.currentTimeMillis() - start);
 
         List<CompletableFuture<List<EbookEntity>>> completableFutures = new ArrayList<>();
-        for (List<EbookEntity> list : lists) {
-            CompletableFuture<List<EbookEntity>> completableFuture = ebookService.createAsync(list);
+        for (int i = 0; i < num; i++) {
+            CompletableFuture<List<EbookEntity>> completableFuture = ebookService.createAsync(ebookEntityList);
             completableFutures.add(completableFuture);
         }
+
         log.info("异步执行时长：{}毫秒", System.currentTimeMillis() - start);
         CompletableFuture<Void> future = CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new));
         log.info("异步allOf执行时长：{}毫秒", System.currentTimeMillis() - start);
-        future.join();
+        try {
+            future.join();
+        } catch (Exception e) {
+            log.info("有错误:", e);
+        }
         log.info("异步结果执行时长：{}毫秒", System.currentTimeMillis() - start);
         for (CompletableFuture<List<EbookEntity>> completableFuture : completableFutures) {
             try {
                 List<EbookEntity> ebookEntities = completableFuture.get();
-                log.info("size:{}", ebookEntities.size());
-                log.info("1000:{}", ebookEntities.get(999).getId());
+                log.info("last:{}", ebookEntities.get(ebookEntities.size() - 1).getId());
             } catch (InterruptedException | ExecutionException e) {
                 throw new RuntimeException(e);
             }

@@ -4,6 +4,7 @@ import com.study.demo.application.assembler.EbookAssembler;
 import com.study.demo.domain.model.EbookEntity;
 import com.study.demo.domain.support.EbookRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class EbookServiceImpl {
@@ -35,6 +37,7 @@ public class EbookServiceImpl {
     @Async
     public CompletableFuture<List<EbookEntity>> createAsync(List<EbookEntity> list) {
         List<EbookEntity> entities = ebookRepository.createAll(list);
+        log.info("init:{}", entities.get(entities.size() - 1).getId());
         return CompletableFuture.completedFuture(entities);
     }
 }

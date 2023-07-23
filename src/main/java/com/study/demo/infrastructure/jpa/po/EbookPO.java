@@ -15,7 +15,8 @@ import lombok.ToString;
 public class EbookPO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "t_seq")
+    @SequenceGenerator(name = "t_seq", allocationSize = 1000)
     private Long id;
 
     @Column(columnDefinition = "varchar(255)")
